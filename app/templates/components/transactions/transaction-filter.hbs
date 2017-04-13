@@ -1,0 +1,20 @@
+<div class="transactions-filter">
+  <div class="action-tags">
+    <div class="date-range">{{dateRange}}</div>
+    <div>
+      <a href="#">+Add</a> |
+      <a href="#" {{action "showSearchOption"}}>Search</a> |
+      <a href="#">Download</a>
+    </div>
+  </div>
+
+  {{#if showSearchOption}}
+    <div class="search-area">
+      <label>Search</label>
+      {{input id="search-input" placeholder="Type to search"}}
+    </div>
+  {{/if}}
+</div>
+
+{{yield results}}
+

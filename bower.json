@@ -1,5 +1,6 @@
 {
   "name": "ally-transaction",
   "dependencies": {
+    "moment": "momentjs#^2.17.1"
   }
 }

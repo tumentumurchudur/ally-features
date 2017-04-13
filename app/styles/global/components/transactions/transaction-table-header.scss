@@ -1,0 +1,38 @@
+th {
+  padding-top: $spacing-xsmall;
+  padding-bottom: $spacing-xsmall;
+  padding-left: $spacing-xsmall;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+
+  // Date
+  &:nth-child(1) {
+    width: 12%;
+  }
+
+  // Description
+  &:nth-child(2) {
+    width: 25%;
+  }
+
+  // Category
+  &:nth-child(3) {
+    width: 20%;
+  }
+
+  // Account
+  &:nth-child(4) {
+    width: 15%;
+  }
+
+  // Amount
+  &:nth-child(5) {
+    width: 15%;
+  }
+
+  &:nth-child(5) {
+    text-align: right;
+    padding-right: $spacing-xsmall;
+  }
+}

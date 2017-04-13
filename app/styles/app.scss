@@ -1,0 +1,12 @@
+@import "global/_variables.scss";
+
+@import "mixins/transactions.scss";
+
+@import "global/components/transactions/transaction-table.scss";
+@import "global/components/transactions/transaction-table-header.scss";
+@import "global/components/transactions/transaction-table-row.scss";
+@import "global/components/transactions/transaction-filter.scss";
+
+body {
+  background-color: #F1F3F3
+}

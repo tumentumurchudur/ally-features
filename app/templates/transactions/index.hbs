@@ -1,0 +1,4 @@
+<h3>Transaction history</h3>
+{{#transactions/transaction-filter filter=(action "filter") as |rows|}}
+  {{transactions/transaction-table rows=rows}}
+{{/transactions/transaction-filter}}

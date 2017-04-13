@@ -1,0 +1,8 @@
+@mixin a-tag {
+  color: $_PRIMARY;
+  font-size: $font-size-small;
+  margin-right: $spacing-xsmall;
+  margin-left: $spacing-xsmall;
+  margin: $spacing-xsmall;
+  text-decoration: none;
+}

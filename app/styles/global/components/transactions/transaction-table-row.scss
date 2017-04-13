@@ -1,0 +1,21 @@
+.table-row-border {
+  border-bottom: 1px solid $_FOG;
+  cursor: pointer;
+  position: relative;
+
+  td {
+    font-size: $font-size-small;
+    padding: $spacing-xsmall;
+
+    // Date
+    &:nth-child(1) {
+      padding-left: $spacing-xsmall;
+    }
+
+    // Amount
+    &:nth-child(5) {
+      text-align: right;
+      padding-right: $spacing-xsmall;
+    }
+  }
+}

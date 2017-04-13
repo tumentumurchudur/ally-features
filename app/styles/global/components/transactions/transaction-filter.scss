@@ -1,0 +1,51 @@
+.transactions-filter {
+  background-color: $_FOG;
+  border: 1px solid $_ASH;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .action-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    margin: $spacing-xsmall;
+    width: 100%;
+
+    .date-range {
+      @include a-tag;
+      position: absolute;
+      left: $spacing-xsmall;
+      align-self: center;
+      margin: 0;
+      padding-left: $spacing-xsmall;
+    }
+  }
+
+  a {
+    @include a-tag;
+  }
+
+  .search-area {
+    background-color: $_WHITE;
+    width: 100%;
+
+    label {
+      display: block;
+      font-size: $font-size-medium;
+      margin-top: $spacing-small;
+      padding-left: $spacing-small;
+      text-transform: uppercase;
+    }
+
+    input:focus {
+      outline: none;
+    }
+    input {
+      font-size: $font-size-small;
+      margin-left: $spacing-small;
+      margin-bottom: $spacing-small;
+    }
+  }
+}
