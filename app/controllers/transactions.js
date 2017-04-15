@@ -9,8 +9,9 @@ export default Controller.extend({
     filter(value) {
       if (value !== "") {
         return this.store.filter('transaction', function(transaction) {
-          // TODO: Search for transactions by a keyword on all columns.
-          return transaction.get("account").toLowerCase().indexOf(value.toLowerCase()) > -1;
+          return transaction.get("account").toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+            transaction.get("description").toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+            transaction.get("category").toLowerCase().indexOf(value.toLowerCase()) > -1;
         });
       } else {
         // By default, return last 30 days transactions

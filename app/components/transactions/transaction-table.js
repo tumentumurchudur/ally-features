@@ -15,6 +15,7 @@ export default Component.extend({
   showTotalLabel: "Total",
   reverseSort: false,
   sortBy: 'date',
+  hasRows: computed.alias('rows.length'),
 
   countHeaders: computed.alias('headers.length'),
   amounts: computed.mapBy('rows', 'amount'),

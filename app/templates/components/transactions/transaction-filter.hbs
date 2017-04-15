@@ -11,7 +11,7 @@
   {{#if showSearchOption}}
     <div class="search-area">
       <label>Search</label>
-      {{input id="search-input" placeholder="Type to search"}}
+      {{input id="search-input" value=value key-up="filter" placeholder="Type to search"}}
     </div>
   {{/if}}
 </div>

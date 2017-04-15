@@ -32,6 +32,13 @@ export default Component.extend({
   },
 
   actions: {
+    filter() {
+      const filterValue = get(this, 'value');
+      const filterAction = get(this, 'filter');
+
+      filterAction(filterValue).then(results => set(this, 'results', results));
+    },
+
     showSearchOption() {
       this.toggleProperty('showSearchOption');
       const showSearch = get(this, 'showSearchOption');

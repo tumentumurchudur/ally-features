@@ -1,26 +1,30 @@
-<table>
-  <thead>
-    <tr class="header-row">
-      {{#each headers as |header|}}
-        {{transactions/transaction-table-header
-          header=header
-          sortBy=sortBy
-          reverseSort=reverseSort
-          click=(action "sort" header)}}
-      {{/each}}
-    </tr>
-  </thead>
-  <tbody>
-    {{#each sortedRows as |row|}}
-      {{transactions/transaction-table-row row=row}}
-    {{/each}}
-    {{#if showTotal}}
-      <tr class="total-amount-row">
-        <td colspan={{countHeaders}}>
-          <div class="label">{{showTotalLabel}}</div>
-          <div class="value">{{format-currency totalAmount}}</div>
-        </td>
+{{#if hasRows}}
+  <table>
+    <thead>
+      <tr class="header-row">
+        {{#each headers as |header|}}
+          {{transactions/transaction-table-header
+            header=header
+            sortBy=sortBy
+            reverseSort=reverseSort
+            click=(action "sort" header)}}
+        {{/each}}
       </tr>
-    {{/if}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each sortedRows as |row|}}
+        {{transactions/transaction-table-row row=row}}
+      {{/each}}
+      {{#if showTotal}}
+        <tr class="total-amount-row">
+          <td colspan={{countHeaders}}>
+            <div class="label">{{showTotalLabel}}</div>
+            <div class="value">{{format-currency totalAmount}}</div>
+          </td>
+        </tr>
+      {{/if}}
+    </tbody>
+  </table>
+{{else}}
+  <span class="no-result">No search results.</span>
+{{/if}}
