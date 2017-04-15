@@ -1,5 +1,5 @@
 export default function(server) {
-  server.createList('transaction', 8);
+  server.createList('transaction', 25);
 
   /*
     Seed your development database using your factories.

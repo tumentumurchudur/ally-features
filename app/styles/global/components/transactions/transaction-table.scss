@@ -1,14 +1,40 @@
-.transactions-table {
-  background-color: white;
-  width: 100%;
-  border-collapse: collapse;
-
-  .header-row {
-    background-color: $_ASH;
-    color: white;
-    font-size: $font-size-small;
-    font-family: $font-thin;
-    text-align: left;
+.transaction-table {
+  table {
+    background-color: white;
     width: 100%;
+    border-collapse: collapse;
+
+    .header-row {
+      background-color: $_ASH;
+      color: white;
+      font-size: $font-size-small;
+      font-family: $font-thin;
+      text-align: left;
+      width: 100%;
+    }
+
+    .total-amount-row {
+      border-bottom: 1px solid $_FOG;
+      background-color: $_FOG;
+      height: 22px;
+
+      td {
+        position: relative;
+        font-size: $font-size-small;
+        font-weight: 700;
+
+        .label {
+          position: absolute;
+          left: 5px;
+          top: 4px;
+        }
+
+        .value {
+          position: absolute;
+          right: 5px;
+          top: 4px;
+        }
+      }
+    }
   }
 }

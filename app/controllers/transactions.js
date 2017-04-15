@@ -13,7 +13,10 @@ export default Controller.extend({
           return transaction.get("account").toLowerCase().indexOf(value.toLowerCase()) > -1;
         });
       } else {
-        return this.store.findAll("transaction");
+        // By default, return last 30 days transactions
+        return this.store.filter('transaction', function(transaction) {
+          return moment(transaction.get("date")) >= moment().add(-30, "days");
+        });
       }
     }
   }

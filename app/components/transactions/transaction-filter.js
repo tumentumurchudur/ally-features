@@ -14,11 +14,12 @@ export default Component.extend({
 
   dates: computed.mapBy('results', 'date'),
   dateRange: computed('dates', function() {
-    const dates = get(this, 'dates').map(d => new Date(d));
+    const allDates = get(this, 'dates').map(date => new Date(date));
 
-    if (dates.length) {
-      const maxDate = moment(Math.max(...dates)).format('MMM DD, YY');
-      const minDate = moment(Math.min(...dates)).format('MMM DD, YY');
+    if (allDates.length) {
+      const dateFormat = 'MMM DD, YY';
+      const maxDate = moment(Math.max(...allDates)).format(dateFormat);
+      const minDate = moment(Math.min(...allDates)).format(dateFormat);
 
       return minDate + " - " + maxDate;
     }
