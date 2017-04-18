@@ -9,5 +9,6 @@
         "**/*.js": false,
         "**/*.js.map": true,
         "**/*.css": false
-    }
+    },
+    "editor.tabSize": 2
 }

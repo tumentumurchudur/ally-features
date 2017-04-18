@@ -1,0 +1,12 @@
+<div class="date-range-selector">
+  <span class="selected-option" {{action "showOptions"}}>
+    {{selectedOption}}
+  </span>
+  {{#if showOptions}}
+    <ul class='options'>
+      {{#each availOptions as |option|}}
+        <li {{action "select" option}}>{{option}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>

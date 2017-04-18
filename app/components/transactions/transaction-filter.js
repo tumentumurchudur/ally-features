@@ -12,19 +12,6 @@ export default Component.extend({
   results: [],
   showSearchOption: false,
 
-  dates: computed.mapBy('results', 'date'),
-  dateRange: computed('dates', function() {
-    const allDates = get(this, 'dates').map(date => new Date(date));
-
-    if (allDates.length) {
-      const dateFormat = 'MMM DD, YY';
-      const maxDate = moment(Math.max(...allDates)).format(dateFormat);
-      const minDate = moment(Math.min(...allDates)).format(dateFormat);
-
-      return minDate + " - " + maxDate;
-    }
-  }),
-
   init() {
     this._super(...arguments);
 
@@ -37,6 +24,11 @@ export default Component.extend({
       const filterAction = get(this, 'filter');
 
       filterAction(filterValue).then(results => set(this, 'results', results));
+    },
+
+    filterByDateRange(startDate, endDate) {
+      const filterAction = get(this, 'filterByDateRange');
+      filterAction(startDate, endDate).then(results => set(this, 'results', results));
     },
 
     showSearchOption() {

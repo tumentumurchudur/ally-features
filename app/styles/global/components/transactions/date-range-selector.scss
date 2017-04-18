@@ -1,0 +1,30 @@
+.date-range-selector {
+	position: relative;
+
+	.selected-option {
+		cursor: pointer;
+	}
+
+	.options {
+		position: absolute;
+		top: 10px;
+		left: -5px;
+		background-color: $_FOG;
+		border: 1px solid $_ASH;
+		width: 90px;
+		list-style: none;
+		padding: 0;
+		z-index: 10;
+
+		li {
+			cursor: pointer;
+			margin-bottom: 4px;
+			height: 15px;
+			padding: 3px;
+
+			&:hover {
+				background-color: white;
+			}
+		}
+	}
+}

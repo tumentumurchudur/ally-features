@@ -1,6 +1,8 @@
 <div class="transactions-filter">
   <div class="action-tags">
-    <div class="date-range">{{dateRange}}</div>
+    <div class="date-range">
+      {{transactions/date-range-selector onSelect=(action "filterByDateRange")}}
+    </div>
     <div>
       <a href="#">+Add</a> |
       <a href="#" {{action "showSearchOption"}}>Search</a> |

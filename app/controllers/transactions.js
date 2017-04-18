@@ -19,6 +19,13 @@ export default Controller.extend({
           return moment(transaction.get("date")) >= moment().add(-30, "days");
         });
       }
+    },
+
+    filterByDateRange(startDate, endDate) {
+      return this.store.filter('transaction', function(transaction) {
+        return moment(transaction.get("date")) >= moment(startDate) &&
+          moment(transaction.get("date")) <= moment(endDate);
+      });
     }
   }
 });
