@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 const {
   Component,
-  computed,
   get,
   set,
   $
@@ -28,6 +27,7 @@ export default Component.extend({
 
     filterByDateRange(startDate, endDate) {
       const filterAction = get(this, 'filterByDateRange');
+
       filterAction(startDate, endDate).then(results => set(this, 'results', results));
     },
 

@@ -2,7 +2,15 @@ export default function() {
   this.namespace = '/api';
 
   this.get("/transactions");
-  this.get('/transactions/:id');
+  this.get('/transactions/from/:startDate/to/:endDate', function(db, query) {
+    const { startDate, endDate } = query.params;
+    const format = 'MM-DD-YYYY';
+
+    return db.transactions.where(function(transaction) {
+      return moment(transaction.date, format) >= moment(startDate, format) &&
+         moment(transaction.date, format) <= moment(endDate, format);
+    });
+  });
 
   // These comments are here to help you get started. Feel free to delete them.
 

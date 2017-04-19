@@ -50,7 +50,7 @@ export default Component.extend({
 							endDate = new Date();
 							startDate = moment().add(-12, 'months');
 					}
-					this.attrs.onSelect(startDate, endDate);
+					this.attrs.onSelect(moment(startDate).format('M-D-YYYY'), moment(endDate).format('M-D-YYYY'));
 
 					set(this, 'showOptions', false);
 					set(this, 'selectedOption', option);

@@ -1,7 +1,9 @@
 <h3>Transaction history</h3>
-{{#transactions/transaction-filter filterByDateRange=(action "filterByDateRange") filter=(action "filter") as |rows|}}
-  {{transactions/transaction-table
-    showTotal=true
-    showTotalLabel="Total Amount"
-    rows=rows}}
+{{#transactions/transaction-filter
+  filter=(action "filter")
+  filterByDateRange=(action "filterByDateRange") as |rows|}}
+    {{transactions/transaction-table
+      showTotal=true
+      showTotalLabel="Total Amount"
+      rows=rows}}
 {{/transactions/transaction-filter}}

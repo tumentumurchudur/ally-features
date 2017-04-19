@@ -22,10 +22,7 @@ export default Controller.extend({
     },
 
     filterByDateRange(startDate, endDate) {
-      return this.store.filter('transaction', function(transaction) {
-        return moment(transaction.get("date")) >= moment(startDate) &&
-          moment(transaction.get("date")) <= moment(endDate);
-      });
+      return this.store.query('transaction', { filterType: 'dateRange', startDate, endDate });
     }
   }
 });

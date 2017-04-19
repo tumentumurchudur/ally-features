@@ -1,29 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-
-  normalizeFindRecordResponse(store, type, payload) {
-    const { transaction } = payload;
-
+  _normalizeTransactions(transactions, type) {
     return {
-      data: {
-        id: transaction.id,
-          type: type.modelName,
-          attributes: {
-            account: transaction.account,
-            amount: transaction.amount,
-            category: transaction.category,
-            date: transaction.date,
-            description: transaction.description,
-            logoUrl: transaction.logoUrl
-          }
-      }
-    };
-  },
-
-  normalizeFindAllResponse(store, type, payload) {
-    return {
-      data: payload.transactions.map(d => {
+      data: transactions.map(d => {
         return {
           id: d.id,
           type: type.modelName,
@@ -37,6 +17,14 @@ export default DS.JSONAPISerializer.extend({
           }
         };
       })
-     };
-  }
+    };
+  },
+
+  normalizeFindAllResponse(store, type, payload) {
+    return this._normalizeTransactions(payload.transactions, type);
+  },
+
+  normalizeQueryResponse(store, type, payload) {
+    return this._normalizeTransactions(payload.transactions, type);
+  },
 });
