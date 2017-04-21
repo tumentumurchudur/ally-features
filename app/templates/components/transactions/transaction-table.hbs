@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       {{#each sortedRows as |row|}}
-        {{transactions/transaction-table-row row=row}}
+        {{transactions/transaction-table-row row=row exclude=(action "excludeTransaction")}}
       {{/each}}
       {{#if showTotal}}
         <tr class="total-amount-row">

@@ -32,6 +32,13 @@ export default Component.extend({
     sort(colHeader) {
       set(this, 'sortBy', colHeader);
       this.toggleProperty('reverseSort');
+    },
+
+    excludeTransaction(row) {
+      const rows = get(this, 'sortedRows').filter(r => r.id !== row.id);
+      set(this, 'rows', rows);
+
+      this.sendAction('excludeTransaction', row);
     }
   }
 });

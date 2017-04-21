@@ -1,5 +1,20 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  tagName: ''
+const {
+  Component
+} = Ember;
+
+export default Component.extend({
+  tagName: '',
+  showDetails: false,
+
+  actions: {
+    showDetails() {
+      this.toggleProperty('showDetails');
+    },
+
+    excludeTransaction(row) {
+      this.attrs.exclude(row);
+    }
+  }
 });

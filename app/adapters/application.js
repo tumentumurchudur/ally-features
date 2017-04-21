@@ -17,7 +17,7 @@ export default DS.JSONAPIAdapter.extend({
         $.getJSON(url).then(data => resolve(data), err => reject(err));
       });
     } else {
-      this._super(store, type, query);
+      return this._super(store, type, query);
     }
   }
 });

@@ -1,7 +1,19 @@
-<tr class="transaction-table-row">
+<tr class="transaction-table-row" {{action "showDetails"}}>
   <td>{{format-date row.date}}</td>
   <td>{{row.description}}</td>
   <td>{{row.category}}</td>
   <td>{{row.account}}</td>
   <td>{{format-currency row.amount}}</td>
 </tr>
+{{#if showDetails}}
+  <tr>
+    <td colspan=5>
+      <div>
+        {{transactions/transaction-details
+          row=row
+          exclude=(action "excludeTransaction")
+          close=(action "showDetails")}}
+      </div>
+    </td>
+  </tr>
+{{/if}}

@@ -1,0 +1,144 @@
+.transaction-details {
+  &:focus {
+    outline: none;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid $_FOG;
+    position: relative;
+
+    img {
+      height: 55px;
+      width: 55px;
+      align-self: center;
+      position: absolute;
+      left: $spacing-small;
+    }
+
+    .detail-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+    }
+
+    .title-text {
+      font-weight: bold;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+    }
+
+    .detail-text {
+      font-size: $font-size-tiny;
+      margin-bottom: $spacing-xsmall;
+    }
+
+    .manage-transactions {
+      position: relative;
+      margin-top: 10px;
+
+      .options-link {
+        cursor: pointer;
+        font-size: $font-size-tiny;
+        color: $_PRIMARY;
+        font-weight: 600;
+      }
+
+      .options {
+        position: absolute;
+        right: -25px;
+        top: 17px;
+        border: 1px solid $_FOG;
+        background-color: white;
+        color: $_PRIMARY;
+        box-shadow: 2px 2px 3px $_FOG;
+        font-size: 8px;
+        width: 120px;
+        z-index: 10;
+
+        ul {
+          list-style: none;
+          padding-left: 0px;
+          margin: 3px 0px;
+
+          li {
+            cursor: pointer;
+            margin-bottom: 4px;
+            padding: 3px;
+
+            &:hover {
+              background-color: $_FOG;
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      @include a-tag;
+      height: $spacing-medium;
+    }
+
+    .arrow_box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #DFE3E8;
+    }
+    .arrow_box:after, .arrow_box:before {
+      bottom: 100%;
+      left: 85%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .arrow_box:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #fff;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+    .arrow_box:before {
+      border-color: rgba(223, 227, 232, 0);
+      border-bottom-color: #DFE3E8;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+
+    .arrow-down {
+      position: absolute;
+      right: -12px;
+      top: 5px;
+      margin-left: 3px;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid $_PRIMARY;
+    }
+
+    .arrow-up {
+      position: absolute;
+      right: -12px;
+      top: 5px;
+      bottom: 7px;
+      margin-left: 3px;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid $_PRIMARY;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 0px;
+      right: $spacing-xsmall;
+      margin: 0px;
+    }
+  }
+}

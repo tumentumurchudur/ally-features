@@ -1,0 +1,28 @@
+<div class="details" {{action "closeOptions"}}>
+  <img src={{row.logoUrl}} alt="">
+  <div class="detail-wrapper">
+    <span class="title-text">Description</span>
+    <span class="detail-text">{{row.description}}</span>
+
+    <span class="title-text">Transaction Date</span>
+    <span class="detail-text">{{format-date row.date}}</span>
+
+    <span class="title-text">Note to self</span>
+  </div>
+  <div class="manage-transactions">
+    <div class="options-link" onclick={{action "toggleOptions"}}>
+      Manage Transactions
+      <div class={{arrowClass}}></div>
+    </div>
+    {{#if showOptions}}
+      <div class="options arrow_box">
+        <ul onclick={{action "selectOption" row}}>
+          <li data-action-value="edit">Edit Details</li>
+          <li data-action-value="split">Split Transaction</li>
+          <li data-action-value="exclude">Exclude Transaction</li>
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+  <a href="#" class="close-button" {{action "close"}}>X</a>
+</div>

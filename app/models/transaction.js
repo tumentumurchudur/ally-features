@@ -5,5 +5,7 @@ export default DS.Model.extend({
     description: DS.attr(),
     category: DS.attr(),
     account: DS.attr(),
-    amount: DS.attr("number")
+    amount: DS.attr("number"),
+    logoUrl: DS.attr(),
+    is_hidden: DS.attr()
 });

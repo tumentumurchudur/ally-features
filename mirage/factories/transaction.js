@@ -5,5 +5,7 @@ export default Factory.extend({
   'description'() { return faker.lorem.sentence(3); },
   'category'() { return faker.lorem.words(2); },
   'account'() { return faker.lorem.words(2); },
-  'amount'() { return parseFloat(faker.finance.amount(100, 2500)); }
+  'amount'() { return parseFloat(faker.finance.amount(100, 2500)); },
+  logoUrl: faker.internet.avatar,
+  is_hidden: false
 });

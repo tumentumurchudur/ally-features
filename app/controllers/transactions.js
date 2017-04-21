@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 const {
-  Controller
+  Controller,
+  set,
+  get
 } = Ember;
 
 export default Controller.extend({
@@ -23,6 +25,11 @@ export default Controller.extend({
 
     filterByDateRange(startDate, endDate) {
       return this.store.query('transaction', { filterType: 'dateRange', startDate, endDate });
+    },
+
+    excludeTransaction(transaction) {
+      transaction.set('is_hidden', true);
+      transaction.save();
     }
   }
 });
