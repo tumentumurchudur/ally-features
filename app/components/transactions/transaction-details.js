@@ -54,8 +54,12 @@ export default Component.extend({
 
     updateDetails(row) {
       const formatDate = get(this, 'formatDate');
+      const origDate = moment(get(this, 'row.date')).format('MMM DD, YYYY');
 
-      row.set('date', moment(formatDate, 'MMM DD, YYYY'));
+      if (formatDate !== origDate) {
+        row.set('date', moment(formatDate, 'MMM DD, YYYY'));
+      }
+
       row.save();
       set(this, 'editRow', false);
     },
