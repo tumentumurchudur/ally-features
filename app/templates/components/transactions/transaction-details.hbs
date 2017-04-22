@@ -6,10 +6,10 @@
       {{input type="text" value=row.description}}
 
       <span class="title-text">Transaction Date</span>
-      {{input type="text" value=row.date}}
+      {{input type="text" value=formatDate}}
 
       <span class="title-text">Note to self</span>
-      {{textarea rows="2"}}
+      {{textarea rows="2" value=row.memo}}
 
       <div class="buttons">
         <button {{action "updateDetails" row}}>Save Changes</button>
@@ -23,6 +23,7 @@
       <span class="detail-text">{{format-date row.date}}</span>
 
       <span class="title-text">Note to self</span>
+      <span class="detail-text">{{row.memo}}</span>
     {{/if}}
   </div>
   <div class="manage-transactions">

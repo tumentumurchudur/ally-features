@@ -7,5 +7,6 @@ export default DS.Model.extend({
     account: DS.attr(),
     amount: DS.attr("number"),
     logoUrl: DS.attr(),
-    isHidden: DS.attr()
+    isHidden: DS.attr(),
+    memo: DS.attr()
 });
