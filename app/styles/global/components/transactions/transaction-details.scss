@@ -140,5 +140,11 @@
       right: $spacing-xsmall;
       margin: 0px;
     }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
   }
 }

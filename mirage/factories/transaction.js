@@ -7,5 +7,5 @@ export default Factory.extend({
   'account'() { return faker.lorem.words(2); },
   'amount'() { return parseFloat(faker.finance.amount(100, 2500)); },
   logoUrl: faker.internet.avatar,
-  is_hidden: false
+  isHidden: false
 });

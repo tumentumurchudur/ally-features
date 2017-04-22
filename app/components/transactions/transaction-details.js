@@ -11,6 +11,7 @@ export default Component.extend({
   row: {},
   showOptions: false,
   arrowClass: 'arrow-up',
+  editRow: false,
 
   didInsertElement() {
     return this.$().attr({ tabindex: 1 }), this.$().focus();
@@ -33,8 +34,20 @@ export default Component.extend({
 
       if (actionValue === 'exclude') {
         this.attrs.exclude(row);
-        set(this, 'showOptions', false);
+      } else if (actionValue === 'edit') {
+        set(this, 'editRow', true);
       }
+
+      set(this, 'showOptions', false);
+    },
+
+    cancelEdit() {
+      set(this, 'editRow', false);
+    },
+
+    updateDetails(row) {
+      set(this, 'editRow', false);
+      row.save();
     },
 
     toggleOptions(event) {
@@ -43,11 +56,7 @@ export default Component.extend({
       this.toggleProperty('showOptions');
       const isOpen = get(this, 'showOptions');
 
-      if (isOpen) {
-        set(this, 'arrowClass', 'arrow-down');
-      } else {
-        set(this, 'arrowClass', 'arrow-up');
-      }
+      set(this, 'arrowClass', isOpen ? 'arrow-down' : 'arrow-up');
     },
 
     closeOptions() {

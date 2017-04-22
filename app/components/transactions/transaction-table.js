@@ -38,7 +38,8 @@ export default Component.extend({
       const rows = get(this, 'sortedRows').filter(r => r.id !== row.id);
       set(this, 'rows', rows);
 
-      this.sendAction('excludeTransaction', row);
+      row.set('isHidden', true);
+      row.save();
     }
   }
 });
