@@ -7,8 +7,8 @@ export default function() {
     const format = 'MM-DD-YYYY';
 
     return db.transactions.where(function(transaction) {
-      return moment(transaction.date, format) >= moment(startDate, format) &&
-         moment(transaction.date, format) <= moment(endDate, format);
+      return moment(transaction.date) >= moment(startDate, format) &&
+         moment(transaction.date) <= moment(endDate, format);
     });
   });
 
