@@ -16,3 +16,4 @@
 npm-debug.log*
 testem.log
 sh.exe.stackdump
+.vscode/settings.json
