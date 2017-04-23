@@ -18,7 +18,7 @@ export default function() {
 
   this.patch('transactions/:id', function(db, query) {
     const id = query.params.id;
-    const { transaction } = JSON.parse(query.requestBody);
+    let { transaction } = Object.assign({}, JSON.parse(query.requestBody));
     delete transaction.id;
 
     return db.transactions.find([id]).update(transaction);
