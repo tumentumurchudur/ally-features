@@ -30,6 +30,15 @@ export default Component.extend({
     }
   },
 
+  closeOptions() {
+    const isOpen = get(this, 'showOptions');
+
+    if (isOpen) {
+      set(this, 'showOptions', false);
+      set(this, 'arrowClass', 'arrow-up');
+    }
+  },
+
   actions: {
     close() {
       this.attrs.close();
@@ -45,7 +54,7 @@ export default Component.extend({
         set(this, 'editRow', true);
       }
 
-      set(this, 'showOptions', false);
+      this.closeOptions();
     },
 
     cancelEdit() {
@@ -74,12 +83,7 @@ export default Component.extend({
     },
 
     closeOptions() {
-      const isOpen = get(this, 'showOptions');
-
-      if (isOpen) {
-        set(this, 'showOptions', false);
-        set(this, 'arrowClass', 'arrow-up');
-      }
+      this.closeOptions();
     }
   }
 });

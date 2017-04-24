@@ -12,7 +12,8 @@
     img {
       height: 55px;
       width: 55px;
-      align-self: center;
+      align-self: flex-start;
+      margin-top: $spacing-small;
       position: absolute;
       left: $spacing-small;
     }
@@ -20,13 +21,19 @@
     .detail-wrapper {
       display: flex;
       flex-direction: column;
-      margin: 10px;
+      margin: $spacing-small;
+
+      input, textarea {
+        font-size: $font-size-small;
+        margin-bottom: $spacing-xsmall;
+      }
     }
 
     .title-text {
       font-weight: bold;
       font-size: $font-size-small;
       text-transform: uppercase;
+      margin-bottom: $spacing-xsmall;
     }
 
     .detail-text {
@@ -36,7 +43,7 @@
 
     .manage-transactions {
       position: relative;
-      margin-top: 10px;
+      margin-top: $spacing-small;
 
       .options-link {
         cursor: pointer;
@@ -144,7 +151,6 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-      margin-top: 10px;
     }
   }
 }
