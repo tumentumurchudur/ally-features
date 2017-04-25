@@ -61,8 +61,8 @@ export default Component.extend({
     },
 
     updateDetails(row) {
-      row.save();
       set(this, 'editRow', false);
+      row.save();
     },
 
     toggleOptions(event) {

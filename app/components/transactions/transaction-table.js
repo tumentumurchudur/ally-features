@@ -35,7 +35,7 @@ export default Component.extend({
     },
 
     excludeTransaction(row) {
-      const rows = get(this, 'sortedRows').filter(r => r.id !== row.id);
+      const rows = get(this, 'rows').filter(r => r.id !== row.id);
       set(this, 'rows', rows);
 
       row.set('isHidden', true);
