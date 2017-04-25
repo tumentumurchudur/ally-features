@@ -3,12 +3,12 @@
   <div class="detail-wrapper">
     {{#if editRow}}
       <span class="title-text">Description</span>
-      {{input type="text" value=row.description}}
+      {{input type="text" value=description key-up=(action "changeInput")}}
 
       <span class="title-text">Transaction Date</span>
       {{pikaday-input
-        format="MMM DD, YYYY"
-        value=row.date
+        format=dateFormat
+        value=date
         onSelection=(action "selectDate")
         theme="dark-theme"
         class="datepicker"}}
@@ -21,7 +21,7 @@
           label="Save Changes"
           isSmall=true
           isInfo=true
-          onmousedown=(action "updateDetails" row)}}
+          onmousedown=(action "update" row)}}
         {{bulma-button
           label="Cancel"
           isSmall=true

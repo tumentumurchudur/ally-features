@@ -12,13 +12,25 @@ export default Component.extend({
   showOptions: false,
   arrowClass: 'arrow-up',
   editRow: false,
+  dateFormat: 'MMM DD, YYYY',
+
+  init() {
+    this._super(...arguments);
+
+    this.description = get(this, 'row.description');
+    this.date = get(this, 'row.date');
+  },
 
   didInsertElement() {
+    this._super(...arguments);
+
+    // Sets the component in focus, so it can be closed when esc key is pressed.
     return this.$().attr({ tabindex: 1 }), this.$().focus();
   },
 
   keyDown(e) {
-    if (e.keyCode === 27) { // esc key press
+    // Check for esc key press on keydown.
+    if (e.keyCode === 27) {
       this.attrs.close();
     }
   },
@@ -37,36 +49,52 @@ export default Component.extend({
       this.attrs.close();
     },
 
-    selectOption(row, event) {
-      event.stopPropagation();
-      const actionValue = event.target.getAttribute('data-action-value');
+    selectOption(row, e) {
+      e.stopPropagation();
+
+      const actionValue = e.target.getAttribute('data-action-value');
 
       if (actionValue === 'exclude') {
         this.attrs.exclude(row);
       } else if (actionValue === 'edit') {
         set(this, 'editRow', true);
+      } else if (actionValue === 'split') {
+        // TODO: Open transaction split view.
       }
 
       this.closeOptions();
     },
 
     selectDate(date) {
-      let row = get(this, 'row');
+      set(this, 'date', date);
+    },
 
-      row.set('date', date);
+    changeInput(description) {
+      set(this, 'description', description);
     },
 
     cancelEdit() {
+      const description = get(this, 'row.description');
+      const date = get(this, 'row.date');
+
+      set(this, 'description', description);
+      set(this, 'date', date);
       set(this, 'editRow', false);
     },
 
-    updateDetails(row) {
-      set(this, 'editRow', false);
+    update(row) {
+      const date = get(this, 'date');
+      const description = get(this, 'description');
+
+      row.set('date', date);
+      row.set('description', description);
       row.save();
+
+      set(this, 'editRow', false);
     },
 
-    toggleOptions(event) {
-      event.stopPropagation();
+    toggleOptions(e) {
+      e.stopPropagation();
 
       this.toggleProperty('showOptions');
       const isOpen = get(this, 'showOptions');
