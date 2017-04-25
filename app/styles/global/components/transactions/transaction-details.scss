@@ -27,6 +27,10 @@
         font-size: $font-size-small;
         margin-bottom: $spacing-xsmall;
       }
+
+      .datepicker {
+        width: 80px;
+      }
     }
 
     .title-text {
@@ -80,11 +84,6 @@
           }
         }
       }
-    }
-
-    a {
-      @include a-tag;
-      height: $spacing-medium;
     }
 
     .arrow_box {
@@ -146,6 +145,8 @@
       top: 0px;
       right: $spacing-xsmall;
       margin: 0px;
+      height: $spacing-medium;
+      @include a-tag;
     }
 
     .buttons {

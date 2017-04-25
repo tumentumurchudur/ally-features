@@ -6,14 +6,25 @@
       {{input type="text" value=row.description}}
 
       <span class="title-text">Transaction Date</span>
-      {{input type="text" value=formatDate}}
+      {{pikaday-input format="MMM DD, YYYY"
+        value=row.date
+        onSelection=(action "selectDate")
+        theme="dark-theme"
+        class="datepicker"}}
 
       <span class="title-text">Note to self</span>
       {{textarea rows="2" value=row.memo}}
 
       <div class="buttons">
-        <button {{action "updateDetails" row}}>Save Changes</button>
-        <button {{action "cancelEdit"}}>Cancel</button>
+        {{bulma-button
+          label="Save Changes"
+          isSmall=true
+          isInfo=true
+          onmousedown=(action "updateDetails" row)}}
+        {{bulma-button
+          label="Cancel"
+          isSmall=true
+          onmousedown=(action "cancelEdit")}}
       </div>
     {{else}}
       <span class="title-text">Description</span>

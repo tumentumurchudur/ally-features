@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 const {
   Component,
-  computed,
   set,
   get
 } = Ember;
@@ -13,12 +12,6 @@ export default Component.extend({
   showOptions: false,
   arrowClass: 'arrow-up',
   editRow: false,
-
-  formatDate: computed('row.date', function() {
-    const date = get(this, 'row.date');
-
-    return moment(date).format('MMM DD, YYYY');
-  }),
 
   didInsertElement() {
     return this.$().attr({ tabindex: 1 }), this.$().focus();
@@ -57,18 +50,17 @@ export default Component.extend({
       this.closeOptions();
     },
 
+    selectDate(date) {
+      let row = get(this, 'row');
+
+      row.set('date', date);
+    },
+
     cancelEdit() {
       set(this, 'editRow', false);
     },
 
     updateDetails(row) {
-      const formatDate = get(this, 'formatDate');
-      const origDate = moment(get(this, 'row.date')).format('MMM DD, YYYY');
-
-      if (formatDate !== origDate) {
-        row.set('date', moment(formatDate, 'MMM DD, YYYY'));
-      }
-
       row.save();
       set(this, 'editRow', false);
     },
