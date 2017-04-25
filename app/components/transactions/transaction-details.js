@@ -10,7 +10,7 @@ export default Component.extend({
   classNames: ['transaction-details'],
   row: {},
   showOptions: false,
-  arrowClass: 'arrow-up',
+  arrowClass: 'caret-up',
   editRow: false,
   dateFormat: 'MMM DD, YYYY',
 
@@ -40,7 +40,7 @@ export default Component.extend({
 
     if (isOpen) {
       set(this, 'showOptions', false);
-      set(this, 'arrowClass', 'arrow-up');
+      set(this, 'arrowClass', 'caret-up');
     }
   },
 
@@ -99,7 +99,7 @@ export default Component.extend({
       this.toggleProperty('showOptions');
       const isOpen = get(this, 'showOptions');
 
-      set(this, 'arrowClass', isOpen ? 'arrow-down' : 'arrow-up');
+      set(this, 'arrowClass', isOpen ? 'caret-down' : 'caret-up');
     },
 
     closeOptions() {

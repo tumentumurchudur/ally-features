@@ -49,11 +49,67 @@
       position: relative;
       margin-top: $spacing-small;
 
+      .options-link-wrapper {
+        display: flex;
+      }
+
       .options-link {
         cursor: pointer;
         font-size: $font-size-tiny;
         color: $_PRIMARY;
         font-weight: 600;
+      }
+
+      .caret-up {
+        position: relative;
+        top: 4px;
+        left: 4px;
+      }
+
+      .caret-up:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 6px solid $_PRIMARY;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+      }
+
+      .caret-up:after {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        border-bottom: 4px solid $_WHITE;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+      }
+
+      .caret-down {
+        position: relative;
+        top: 4px;
+        left: 4px;
+      }
+
+      .caret-down:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top: 6px solid $_PRIMARY;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+      }
+
+      .caret-down:after {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 0;
+        border-top: 4px solid $_WHITE;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
       }
 
       .options {
@@ -86,14 +142,14 @@
       }
     }
 
-    .arrow_box {
+    .arrow-box {
       position: relative;
       background: #fff;
       border: 1px solid #DFE3E8;
     }
-    .arrow_box:after, .arrow_box:before {
+    .arrow-box:after, .arrow-box:before {
       bottom: 100%;
-      left: 85%;
+      left: 87%;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -102,42 +158,17 @@
       pointer-events: none;
     }
 
-    .arrow_box:after {
+    .arrow-box:after {
       border-color: rgba(255, 255, 255, 0);
       border-bottom-color: #fff;
       border-width: 5px;
       margin-left: -5px;
     }
-    .arrow_box:before {
+    .arrow-box:before {
       border-color: rgba(223, 227, 232, 0);
       border-bottom-color: #DFE3E8;
       border-width: 6px;
       margin-left: -6px;
-    }
-
-    .arrow-down {
-      position: absolute;
-      right: -12px;
-      top: 5px;
-      margin-left: 3px;
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid $_PRIMARY;
-    }
-
-    .arrow-up {
-      position: absolute;
-      right: -12px;
-      top: 5px;
-      bottom: 7px;
-      margin-left: 3px;
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 4px solid $_PRIMARY;
     }
 
     .close-button {

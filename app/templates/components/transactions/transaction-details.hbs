@@ -39,12 +39,12 @@
     {{/if}}
   </div>
   <div class="manage-transactions">
-    <div class="options-link" onclick={{action "toggleOptions"}}>
-      Manage Transaction
+    <div class="options-link-wrapper">
+      <div class="options-link" onclick={{action "toggleOptions"}}>Manage Transaction</div>
       <div class={{arrowClass}}></div>
     </div>
     {{#if showOptions}}
-      <div class="options arrow_box">
+      <div class="options arrow-box">
         <ul onclick={{action "selectOption" row}}>
           <li data-action-value="edit">Edit Details</li>
           <li data-action-value="split">Split Transaction</li>
