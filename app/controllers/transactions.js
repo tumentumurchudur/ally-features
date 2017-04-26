@@ -23,6 +23,19 @@ export default Controller.extend({
 
     filterByDateRange(startDate, endDate) {
       return this.store.query('transaction', { filterType: 'dateRange', startDate, endDate });
+    },
+
+    addTransaction(transaction) {
+      const newTransaction = this.store.createRecord('transaction', {
+        date: transaction.date,
+        account: transaction.account,
+        amount: transaction.amount,
+        category: transaction.category,
+        description: transaction.description,
+        memo: transaction.memo
+      });
+
+      newTransaction.save();
     }
   }
 });

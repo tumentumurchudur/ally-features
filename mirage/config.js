@@ -24,6 +24,14 @@ export default function() {
     return db.transactions.find([id]).update(transaction);
   });
 
+  this.post('transactions', function(db, query) {
+    const { transaction } = Object.assign({}, JSON.parse(query.requestBody));
+
+    transaction.id = db.transactions.all().length + 1;
+
+    return db.transactions.create(transaction);
+  });
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

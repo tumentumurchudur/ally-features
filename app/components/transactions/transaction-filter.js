@@ -10,6 +10,7 @@ const {
 export default Component.extend({
   results: [],
   showSearchOption: false,
+  showManualTransaction: false,
 
   init() {
     this._super(...arguments);
@@ -40,6 +41,19 @@ export default Component.extend({
           $('#search-input').focus();
         });
       }
+    },
+
+    showManualTransaction() {
+      set(this, 'showManualTransaction', true);
+    },
+
+    closeManualTransaction() {
+      set(this, 'showManualTransaction', false);
+    },
+
+    addTransaction(transaction) {
+      set(this, 'showManualTransaction', false);
+      this.attrs.addTransaction(transaction);
     }
   }
 });

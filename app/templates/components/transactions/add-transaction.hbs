@@ -1,0 +1,41 @@
+<div class="add-transaction">
+  <div class="title">Add a Transaction</div>
+  <label>Amount</label>
+  {{input class="input-amount" value=amount}}
+
+  <label>Description</label>
+  {{input class="input-description" value=description}}
+
+  <label>Date</label>
+  {{pikaday-input
+    format=dateFormat
+    value=date
+    onSelection=(action "selectDate")
+    theme="dark-theme"
+    class="datepicker"}}
+
+  <label>Category</label>
+  <select id="ddCategory" onchange={{action "selectCategory" value="target.value"}}>
+    <option value="">Select category</option>
+    {{#each categories as |category|}}
+      <option value={{category}}>{{category}}</option>
+    {{/each}}
+  </select>
+
+  <label>Account</label>
+  <select id="ddAccount" onchange={{action "selectAccount" value="target.value"}}>
+    <option value="">Select account</option>
+    {{#each accounts as |account|}}
+      <option value={{account}}>{{account}}</option>
+    {{/each}}
+  </select>
+
+  <label>NOTE TO SELF</label>
+  {{textarea rows="3" maxlength="40" value=memo key-up=(action "changeTextArea")}}
+
+  <div class="buttons">
+    {{bulma-button class="add-button" disabled=readyToSave isSmall=true isInfo=true label="Add" onmousedown=(action "add")}}
+    {{bulma-button label="Cancel" isSmall=true onmousedown=(action "close")}}
+  </div>
+  <div>{{remainingChars}} characters left.</div>
+</div>

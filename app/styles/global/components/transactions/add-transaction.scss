@@ -1,0 +1,62 @@
+.modal-content {
+  width: inherit;
+}
+
+.add-transaction {
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size-tiny;
+
+  .title {
+    font-size: $font-size-xxlarge;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $_ASH;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: $font-size-tiny;
+    text-transform: uppercase;
+  }
+
+  input {
+    margin-bottom: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  select {
+    padding: 3px 0;
+    margin-bottom: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  textarea {
+    width: 300px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .input-amount, .datepicker {
+    width: 150px;
+  }
+
+  .input-description {
+    width: 300px;
+  }
+
+  .buttons {
+    display: flex;
+
+    .add-button {
+      margin-left: 0px;
+    }
+  }
+}

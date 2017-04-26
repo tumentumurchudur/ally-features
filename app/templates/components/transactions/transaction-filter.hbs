@@ -4,7 +4,7 @@
       {{transactions/date-range-selector onSelect=(action "filterByDateRange")}}
     </div>
     <div>
-      <a href="#">+Add</a> |
+      <a href="#" {{action "showManualTransaction"}}>+Add</a> |
       <a href="#" {{action "showSearchOption"}}>Search</a> |
       <a href="#">Download</a>
     </div>
@@ -16,6 +16,14 @@
       {{input id="search-input" value=value key-up="filter" placeholder="Type to search"}}
     </div>
   {{/if}}
+
+  {{#bulma-modal show=showManualTransaction onclose=(action "closeManualTransaction")}}
+    <div class="box">
+      {{transactions/add-transaction
+        close=(action "closeManualTransaction")
+        add=(action "addTransaction")}}
+    </div>
+  {{/bulma-modal}}
 </div>
 
 {{yield results}}
