@@ -4,7 +4,7 @@ export default Ember.Route.extend({
     controllerName: 'transactions',
 
     model() {
-      // By default, return last 30 days of transactions.
+      // By default, fetch transactions from the last 30 days.
       const format = 'MM-DD-YYYY';
       const endDate = moment().format(format);
       const startDate = moment().add(-30, 'days').format(format);

@@ -2,16 +2,20 @@
   width: inherit;
 }
 
+.box {
+  padding: 10px 20px;
+}
+
 .add-transaction {
   display: flex;
   flex-direction: column;
   font-size: $font-size-tiny;
 
   .title {
-    font-size: $font-size-xxlarge;
+    font-size: $font-size-large;
     padding-bottom: 5px;
     border-bottom: 1px solid $_ASH;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   label {
@@ -20,7 +24,7 @@
   }
 
   input {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     &:focus {
       outline: none;

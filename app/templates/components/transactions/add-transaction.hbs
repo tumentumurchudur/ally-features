@@ -1,17 +1,16 @@
 <div class="add-transaction">
   <div class="title">Add a Transaction</div>
   <label>Amount</label>
-  {{input class="input-amount" value=amount}}
+  {{input type="number" class="input-amount" value=amount}}
 
   <label>Description</label>
   {{input class="input-description" value=description}}
 
   <label>Date</label>
   {{pikaday-input
-    format=dateFormat
+    format='MMM DD, YYYY'
     value=date
     onSelection=(action "selectDate")
-    theme="dark-theme"
     class="datepicker"}}
 
   <label>Category</label>
@@ -31,7 +30,7 @@
   </select>
 
   <label>NOTE TO SELF</label>
-  {{textarea rows="3" maxlength="40" value=memo key-up=(action "changeTextArea")}}
+  {{textarea rows="2" maxlength="40" value=memo key-up=(action "changeTextArea")}}
 
   <div class="buttons">
     {{bulma-button class="add-button" disabled=enableSave isSmall=true isInfo=true label="Add" onmousedown=(action "add")}}

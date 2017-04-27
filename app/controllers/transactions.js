@@ -14,7 +14,6 @@ export default Controller.extend({
             transaction.get("category").toLowerCase().indexOf(value.toLowerCase()) > -1;
         });
       } else {
-        // TODO: Find if there is a better way to do this.
         return this.store.filter('transaction', transaction => transaction);
       }
     },
@@ -41,6 +40,7 @@ export default Controller.extend({
         amount: transaction.amount,
         category: transaction.category,
         description: transaction.description,
+        isHidden: false,
         memo: transaction.memo
       });
 

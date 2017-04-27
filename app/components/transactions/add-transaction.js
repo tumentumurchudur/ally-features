@@ -11,7 +11,6 @@ const {
 const MAX_CHARS = 40;
 
 export default Component.extend({
-  dateFormat: 'MMM DD, YYYY',
   remainingChars: MAX_CHARS,
   amount: null,
   description: null,
@@ -30,7 +29,7 @@ export default Component.extend({
     return !amount || !description || !date || !category || !account;
   }),
 
-  reset() {
+  resetFields() {
     set(this, 'amount', null);
     set(this, 'description', null);
     set(this, 'date', new Date());
@@ -44,8 +43,8 @@ export default Component.extend({
 
   actions: {
     changeTextArea(value) {
-      set(this, 'remainingChars', MAX_CHARS - value.length);
       set(this, 'memo', value);
+      set(this, 'remainingChars', MAX_CHARS - value.length);
     },
 
     selectDate(date) {
@@ -61,7 +60,7 @@ export default Component.extend({
     },
 
     close() {
-      this.reset();
+      this.resetFields();
       this.attrs.close();
     },
 
@@ -76,7 +75,7 @@ export default Component.extend({
       };
 
       this.attrs.add(transaction);
-      this.reset();
+      this.resetFields();
     }
   }
 });

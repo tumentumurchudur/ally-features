@@ -5,6 +5,7 @@
 
 @import "mixins/transactions.scss";
 
+// Style files for components
 @import "global/components/transactions/transaction-table.scss";
 @import "global/components/transactions/transaction-table-header.scss";
 @import "global/components/transactions/transaction-table-row.scss";
@@ -12,7 +13,3 @@
 @import "global/components/transactions/date-range-selector.scss";
 @import "global/components/transactions/transaction-details.scss";
 @import "global/components/transactions/add-transaction.scss";
-
-body {
-  background-color: #F1F3F3
-}

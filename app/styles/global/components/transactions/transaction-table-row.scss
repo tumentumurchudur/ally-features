@@ -4,6 +4,10 @@
   position: relative;
   color: $_CHARCOAL;
 
+  &:hover {
+    background-color: $_FOG;
+  }
+
   td {
     font-size: $font-size-small;
     padding: $spacing-xsmall;
