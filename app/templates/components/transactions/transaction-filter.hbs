@@ -20,6 +20,8 @@
   {{#bulma-modal show=showManualTransaction onclose=(action "closeManualTransaction")}}
     <div class="box">
       {{transactions/add-transaction
+        accounts=accounts
+        categories=categories
         close=(action "closeManualTransaction")
         add=(action "addTransaction")}}
     </div>

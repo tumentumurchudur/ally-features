@@ -5,6 +5,9 @@ export default function() {
     return db.transactions.where(transaction => !transaction.isHidden);
   });
 
+  this.get('/accounts');
+  this.get('/categories');
+
   this.get('/transactions/from/:startDate/to/:endDate', function(db, query) {
     const { startDate, endDate } = query.params;
     const format = 'MM-DD-YYYY';

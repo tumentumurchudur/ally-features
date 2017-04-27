@@ -1,6 +1,8 @@
 <h3>Transaction history</h3>
 {{#transactions/transaction-filter
   filter=(action "filter")
+  getAccounts=(action "getAccounts")
+  getCategories=(action "getCategories")
   addTransaction=(action "addTransaction")
   filterByDateRange=(action "filterByDateRange") as |rows|}}
     {{transactions/transaction-table

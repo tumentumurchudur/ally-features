@@ -16,6 +16,8 @@ export default Component.extend({
     this._super(...arguments);
 
     get(this, 'filter')('').then(results => set(this, 'results', results));
+    get(this, 'getAccounts')().then(accounts => set(this, 'accounts', accounts));
+    get(this, 'getCategories')().then(categories => set(this, 'categories', categories));
   },
 
   actions: {

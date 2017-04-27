@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const {
-  Controller
+  Controller,
 } = Ember;
 
 export default Controller.extend({
@@ -14,14 +14,23 @@ export default Controller.extend({
             transaction.get("category").toLowerCase().indexOf(value.toLowerCase()) > -1;
         });
       } else {
-        // By default, return last 30 days transactions
-        return this.store.filter('transaction', function(transaction) {
-          return moment(transaction.get("date")) >= moment().add(-30, "days");
-        });
+        // TODO: Find if there is a better way to do this.
+        return this.store.filter('transaction', transaction => transaction);
       }
     },
 
+    getAccounts() {
+      return this.store.findAll('account');
+    },
+
+    getCategories() {
+      return this.store.findAll('category');
+    },
+
     filterByDateRange(startDate, endDate) {
+      // This prevents cached transactions from showing up when performing search.
+      this.store.unloadAll('transaction');
+
       return this.store.query('transaction', { filterType: 'dateRange', startDate, endDate });
     },
 

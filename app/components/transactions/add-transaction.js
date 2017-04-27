@@ -11,12 +11,6 @@ const {
 const MAX_CHARS = 40;
 
 export default Component.extend({
-
-  // TODO: Load these from the API
-  categories: ['test1', 'test2', 'test3'],
-  accounts: ['account1', 'account2', 'account3'],
-  // -----------------------------
-
   dateFormat: 'MMM DD, YYYY',
   remainingChars: MAX_CHARS,
   amount: null,
@@ -26,7 +20,7 @@ export default Component.extend({
   account: null,
   memo: null,
 
-  readyToSave: computed('amount', 'description', 'date', 'category', 'account', function() {
+  enableSave: computed('amount', 'description', 'date', 'category', 'account', function() {
     const amount = get(this, 'amount');
     const description = get(this, 'description');
     const date = get(this, 'date');

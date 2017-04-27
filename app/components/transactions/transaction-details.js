@@ -19,6 +19,7 @@ export default Component.extend({
 
     this.description = get(this, 'row.description');
     this.date = get(this, 'row.date');
+    this.memo = get(this, 'row.memo');
   },
 
   didInsertElement() {
@@ -76,18 +77,23 @@ export default Component.extend({
     cancelEdit() {
       const description = get(this, 'row.description');
       const date = get(this, 'row.date');
+      const memo = get(this, 'row.memo');
 
       set(this, 'description', description);
       set(this, 'date', date);
+      set(this, 'memo', memo);
+
       set(this, 'editRow', false);
     },
 
     update(row) {
       const date = get(this, 'date');
       const description = get(this, 'description');
+      const memo = get(this, 'memo');
 
       row.set('date', date);
       row.set('description', description);
+      row.set('memo', memo);
       row.save();
 
       set(this, 'editRow', false);
@@ -96,8 +102,7 @@ export default Component.extend({
     toggleOptions(e) {
       e.stopPropagation();
 
-      this.toggleProperty('showOptions');
-      const isOpen = get(this, 'showOptions');
+      const isOpen = this.toggleProperty('showOptions');
 
       set(this, 'arrowClass', isOpen ? 'caret-down' : 'caret-up');
     },
