@@ -1,9 +1,9 @@
 {{#transactions/transaction-filter
-  filter=(action "filter")
-  getAccounts=(action "getAccounts")
-  getCategories=(action "getCategories")
-  addTransaction=(action "addTransaction")
-  filterByDateRange=(action "filterByDateRange") as |rows|}}
+  filter=(route-action "filter")
+  getAccounts=(route-action "getAccounts")
+  getCategories=(route-action "getCategories")
+  addTransaction=(route-action "addTransaction")
+  filterByDateRange=(route-action "filterByDateRange") as |rows|}}
     {{transactions/transaction-table
       showTotal=true
       showTotalLabel="Total Amount"
