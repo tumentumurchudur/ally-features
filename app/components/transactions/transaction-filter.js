@@ -11,6 +11,7 @@ export default Component.extend({
   results: [],
   showSearchOption: false,
   showManualTransaction: false,
+  loading: false,
 
   init() {
     this._super(...arguments);
@@ -30,14 +31,18 @@ export default Component.extend({
     filterByDateRange(startDate, endDate) {
       const filterAction = get(this, 'filterByDateRange');
 
-      filterAction(startDate, endDate).then(results => set(this, 'results', results));
+      set(this, 'loading', true);
+      filterAction(startDate, endDate).then(results => {
+        set(this, 'results', results);
+        set(this, 'loading', false);
+      });
     },
 
     showSearchOption() {
-      const isSearchOpen = this.toggleProperty('showSearchOption');
+      const isSearchShowing = this.toggleProperty('showSearchOption');
 
       // Sets focus in the search input.
-      if(isSearchOpen) {
+      if(isSearchShowing) {
         Ember.run.scheduleOnce('afterRender', this, function() {
           $('#search-input').focus();
         });

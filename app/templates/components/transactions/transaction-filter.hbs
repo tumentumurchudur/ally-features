@@ -17,16 +17,17 @@
     </div>
   {{/if}}
 
-  {{#bulma-modal show=showManualTransaction onclose=(action "closeManualTransaction")}}
-    <div class="box">
-      {{transactions/add-transaction
-        accounts=accounts
-        categories=categories
-        close=(action "closeManualTransaction")
-        add=(action "addTransaction")}}
-    </div>
-  {{/bulma-modal}}
+  {{#if showManualTransaction}}
+    {{#bulma-modal show=true onclose=(action "closeManualTransaction")}}
+      <div class="box">
+        {{transactions/add-transaction
+          accounts=accounts
+          categories=categories
+          cancel=(action "closeManualTransaction")
+          add=(action "addTransaction")}}
+      </div>
+    {{/bulma-modal}}
+  {{/if}}
 </div>
 
-{{yield results}}
-
+{{yield (hash rows=results loading=loading)}}

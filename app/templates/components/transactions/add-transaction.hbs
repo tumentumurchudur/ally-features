@@ -14,7 +14,7 @@
     class="datepicker"}}
 
   <label>Category</label>
-  <select id="ddCategory" onchange={{action "selectCategory" value="target.value"}}>
+  <select onchange={{action "selectCategory" value="target.value"}}>
     <option value="">Select category</option>
     {{#each categories as |category|}}
       <option value={{category.name}}>{{category.name}}</option>
@@ -22,7 +22,7 @@
   </select>
 
   <label>Account</label>
-  <select id="ddAccount" onchange={{action "selectAccount" value="target.value"}}>
+  <select onchange={{action "selectAccount" value="target.value"}}>
     <option value="">Select account</option>
     {{#each accounts as |account|}}
       <option value={{account.name}}>{{account.name}}</option>
@@ -30,11 +30,11 @@
   </select>
 
   <label>NOTE TO SELF</label>
-  {{textarea rows="2" maxlength="40" value=memo key-up=(action "changeTextArea")}}
+  {{textarea rows="2" maxlength=maxMemoChars value=memo key-up=(action "changeMemo")}}
 
   <div class="buttons">
-    {{bulma-button class="add-button" disabled=enableSave isSmall=true isInfo=true label="Add" onmousedown=(action "add")}}
-    {{bulma-button label="Cancel" isSmall=true onmousedown=(action "close")}}
+    {{bulma-button class="add-button" disabled=disableAddButton isSmall=true isInfo=true label="Add" onmousedown=(action "add")}}
+    {{bulma-button label="Cancel" isSmall=true onmousedown=(action "cancel")}}
   </div>
   <div>{{remainingChars}} characters left.</div>
 </div>

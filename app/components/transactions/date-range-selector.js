@@ -1,8 +1,8 @@
 import Ember from 'ember';
+import computed from 'ember-computed-decorators';
 
 const {
   Component,
-  computed,
   get,
   set
 } = Ember;
@@ -15,16 +15,12 @@ const LAST_12_MONTHS = 'Last 12 months';
 export default Component.extend({
   showOptions: false,
   options: [CURRENT_MONTH, PREV_MONTH, PREV_30_DAYS, LAST_12_MONTHS],
+  selectedOption: PREV_30_DAYS,
 
-  selectedOption: computed('options', function() {
-    return get(this, 'options')[2];
-  }),
-  availOptions: computed('options', 'selectedOption', function() {
-    const allOptions = get(this, 'options');
-    const selectedOption = get(this, 'selectedOption');
-
-    return allOptions.filter(option => option !== selectedOption);
-  }),
+  @computed('options', 'selectedOption')
+  availOptions(options, selectedOption) {
+    return options.filter(option => option !== selectedOption);
+  },
 
   actions: {
     showOptions() {
@@ -32,6 +28,7 @@ export default Component.extend({
     },
 
     select(option) {
+      const dateFormat = 'M-D-YYYY';
       let startDate;
       let endDate;
 
@@ -52,7 +49,8 @@ export default Component.extend({
           endDate = new Date();
           startDate = moment().add(-12, 'months');
       }
-      this.attrs.onSelect(moment(startDate).format('M-D-YYYY'), moment(endDate).format('M-D-YYYY'));
+
+      this.attrs.onSelect(moment(startDate).format(dateFormat), moment(endDate).format(dateFormat));
 
       set(this, 'showOptions', false);
       set(this, 'selectedOption', option);

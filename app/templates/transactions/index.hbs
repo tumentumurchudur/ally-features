@@ -3,9 +3,10 @@
   getAccounts=(route-action "getAccounts")
   getCategories=(route-action "getCategories")
   addTransaction=(route-action "addTransaction")
-  filterByDateRange=(route-action "filterByDateRange") as |rows|}}
+  filterByDateRange=(route-action "filterByDateRange") as |data|}}
     {{transactions/transaction-table
+      loading=data.loading
       showTotal=true
       showTotalLabel="Total Amount"
-      rows=rows}}
+      rows=data.rows}}
 {{/transactions/transaction-filter}}

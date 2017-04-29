@@ -1,17 +1,15 @@
 import Ember from 'ember';
+import computed, { reads } from 'ember-computed-decorators';
 
 const {
   Component,
-  computed,
   set,
   get,
   $
 } = Ember;
 
-const MAX_CHARS = 40;
-
 export default Component.extend({
-  remainingChars: MAX_CHARS,
+  maxMemoChars: 40,
   amount: null,
   description: null,
   date: new Date(),
@@ -19,32 +17,17 @@ export default Component.extend({
   account: null,
   memo: null,
 
-  enableSave: computed('amount', 'description', 'date', 'category', 'account', function() {
-    const amount = get(this, 'amount');
-    const description = get(this, 'description');
-    const date = get(this, 'date');
-    const category = get(this, 'category');
-    const account = get(this, 'account');
+  @reads('maxMemoChars') remainingChars,
 
+  @computed('amount', 'description', 'date', 'category', 'account')
+  disableAddButton(amount, description, date, category, account) {
     return !amount || !description || !date || !category || !account;
-  }),
-
-  resetFields() {
-    set(this, 'amount', null);
-    set(this, 'description', null);
-    set(this, 'date', new Date());
-    set(this, 'category', null);
-    set(this, 'account', null);
-    set(this, 'memo', null);
-
-    $('#ddCategory').val("");
-    $('#ddAccount').val("");
   },
 
   actions: {
-    changeTextArea(value) {
-      set(this, 'memo', value);
-      set(this, 'remainingChars', MAX_CHARS - value.length);
+    changeMemo(memo) {
+      set(this, 'memo', memo);
+      set(this, 'remainingChars', get(this, 'maxMemoChars') - memo.length);
     },
 
     selectDate(date) {
@@ -59,9 +42,8 @@ export default Component.extend({
       set(this, 'account', account);
     },
 
-    close() {
-      this.resetFields();
-      this.attrs.close();
+    cancel() {
+      this.attrs.cancel();
     },
 
     add() {
@@ -75,7 +57,6 @@ export default Component.extend({
       };
 
       this.attrs.add(transaction);
-      this.resetFields();
     }
   }
 });

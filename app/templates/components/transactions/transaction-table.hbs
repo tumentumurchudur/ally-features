@@ -13,11 +13,13 @@
     </thead>
     <tbody>
       {{#each sortedRows as |row|}}
-        {{transactions/transaction-table-row row=row exclude=(action "excludeTransaction")}}
+        {{transactions/transaction-table-row
+          row=row
+          exclude=(action "excludeTransaction")}}
       {{/each}}
       {{#if showTotal}}
         <tr class="total-amount-row">
-          <td colspan={{countHeaders}}>
+          <td colspan={{numOfCols}}>
             <div class="label">{{showTotalLabel}}</div>
             <div class="value">{{format-currency totalAmount}}</div>
           </td>
@@ -26,5 +28,5 @@
     </tbody>
   </table>
 {{else}}
-  <span class="no-result">No search results.</span>
+  <span class="no-result">{{if loading 'Loading...' 'No search results.'}}</span>
 {{/if}}
