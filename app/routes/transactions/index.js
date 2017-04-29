@@ -37,10 +37,15 @@ export default Route.extend({
       },
 
       filterByDateRange(startDate, endDate) {
-        // This prevents cached transactions from showing up when performing search.
-        get(this, 'store').unloadAll('transaction');
+        const store = get(this, 'store');
 
-        return get(this, 'store').query('transaction', { filterType: 'dateRange', startDate, endDate });
+        // This prevents cached transactions from showing up when performing search.
+        store.unloadAll('transaction');
+
+        // store.query method is overriden to send a GET request at a custom URL.
+        return store.query('transaction', { filterType: 'dateRange', startDate, endDate }).then(() => {
+          return store.filter('transaction', transaction => transaction);
+        });
       },
 
       addTransaction(transaction) {
